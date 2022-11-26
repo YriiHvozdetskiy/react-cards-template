@@ -1,45 +1,10 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import css from './Picture.module.scss';
 
 export const Picture = () => {
 
-   const [imgSrc, setimgSrc] = useState('');
-
-   // getInitialState: function(){
-   //    return{file: []}
-   // }
-   //
-   // _onChange: function(){
-   //    // Assuming only image
-   //    var file = this.refs.file.files[0];
-   //    var reader = new FileReader();
-   //    var url = reader.readAsDataURL(file);
-   //
-   //    reader.onloadend = function (e) {
-   //       this.setState({
-   //          imgSrc: [reader.result];
-   //       })
-   //    }.bind(this);
-   //    console.log(url) // Would see a path?
-   //    // TODO: concat files
-   // },
-   //
-   // render: function(){
-   //    return(
-   //       <div>
-   //          <form>
-   //             <input
-   //                ref="file"
-   //                type="file"
-   //                name="user[image]"
-   //                multiple="true"
-   //                onChange={this_onChange}/>
-   //          </form>
-   //          {/* Only show first image, for now. */}
-   //          <img src={this.state.imgSrc} />
-   //       </div>
-   //    )
-   // }
+   const [imgSrc, setImgSrc] = useState();
+   // const file = useRef(null);
 
    // function onImageInput () {
    //    const reader = new FileReader();
@@ -50,16 +15,60 @@ export const Picture = () => {
    //    });
    //    reader.readAsDataURL(this.files[0]);
    // }
+   // console.log('file', file);
+   const changeHandler = (e) => {
+      const {files} = e.target;
+      for (let i = 0; i < files.length; i++) {
+         const file = files[i];
+      }
+      const fileReader = new FileReader();
 
-   const loadHandler = () => {
-      const reader = new FileReader();
-      let uploadedImage = reader.result;
+      fileReader.onchange = (e) => {
+         const {result} = e.target;
+      };
+
+      fileReader.readAsDataURL(fileObject);
+
+      // ======================================
+
+      // console.log('this',this)
+      // var file = this.refs.file.files[0];
+      // const reader = new FileReader();
+      // var uploadedImage = reader.readAsDataURL(file);
+      // // let uploadedImage = reader.result;
+      //
+      // reader.onloadend = function (e) {
+      //    setImgSrc(uploadedImage);
+      // }.bind(this);
+
+      // ======================================
+
+      // const reader = new FileReader();
+      // var url = reader.readAsDataURL(this.files[0]);
+      //
+      // reader.onloadend = function (e) {
+      //    setImgSrc(reader.result)
+
+      // ======================================
+
+      // const reader = new FileReader();
+      //
+      //    reader.addEventListener('load', () => {
+      //       let uploadedImage = reader.result;
+      //       // refs.imageDisplay.src = uploadedImage;
+      //       setImgSrc(uploadedImage)
+      //    });
+      //    reader.readAsDataURL(this.files[0]);
    };
 
    return <>
       <label className={css.imageWrapper}>
          Картинка
-         <input className={css.imageInput} type="file" accept="image/*" onLoad={loadHandler}/>
+         <input className={css.imageInput}
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={changeHandler}/>
          <img className={css.imageDisplay}
               src={imgSrc}
               alt=""/>
