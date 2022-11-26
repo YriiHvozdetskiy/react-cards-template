@@ -31,19 +31,3 @@
    margin-bottom: 15px;
 }
 
-.heading,
-.link,
-.text {
-   background-color: rgba(128, 128, 128, 0.3);
-   border: none;
-   width: 100%;
-}
-.text {
-   resize: none;
-}
-
-.heading::placeholder,
-.link::placeholder,
-.text::placeholder {
-   color: black;
-}

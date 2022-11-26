@@ -1,7 +1,9 @@
-import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import css from './CardsForm.module.scss';
 import {Picture} from '../Picture/Picture';
+import {Input} from '../Input/Input';
+
 // must be cyrillic
 // ^[А-Яа-яЁё\\s]+$
 
@@ -36,29 +38,21 @@ export const CardsForm = () => {
             <div className={css.wrapper}>
                <ul className={css.formList}>
                   <li className={css.formItem}>
-                     <Field
-                        className={css.heading}
-                        type="text"
-                        name="title"
-                        placeholder="Заголовок"
+                     <Input type={'text'}
+                            name={'title'}
+                            placeholder={'Заголовок'}
                      />
-                     <ErrorMessage name="title" component="p"/>
                   </li>
                   <li className={css.formItem}>
-                     <Field className={css.link}
-                            type="url"
-                            name="link"
-                            placeholder="Силка"/>
-                     <ErrorMessage name="link" component="p"/>
+                     <Input type={'url'}
+                            name={'link'}
+                            placeholder={'Силка'}/>
                   </li>
                   <li className={css.formItem}>
-                     <Field
-                        className={css.text}
-                        name="text"
-                        placeholder="Текст"
-                        as="textarea">
-                     </Field>
-                     <ErrorMessage name="text" component="p"/>
+                     <Input name={'text'}
+                            placeholder={'Текст'}
+                            as={'textarea'}
+                     />
                   </li>
                </ul>
                <button className={css.fromBtn} type="submit">Создати</button>
