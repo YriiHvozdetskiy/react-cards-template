@@ -1,64 +1,35 @@
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import css from './Picture.module.scss';
 
 export const Picture = () => {
 
-   const [imgSrc, setImgSrc] = useState();
-   // const file = useRef(null);
+   const [file, setFile] = useState(null);
+   const [fileDataURL, setFileDataURL] = useState(null);
 
-   // function onImageInput () {
-   //    const reader = new FileReader();
-   //
-   //    reader.addEventListener('load', () => {
-   //       let uploadedImage = reader.result;
-   //       refs.imageDisplay.src = uploadedImage;
-   //    });
-   //    reader.readAsDataURL(this.files[0]);
-   // }
-   // console.log('file', file);
-   const changeHandler = (e) => {
-      const {files} = e.target;
-      for (let i = 0; i < files.length; i++) {
-         const file = files[i];
+   useEffect(() => {
+      let fileReader, isCancel = false;
+      if (file) {
+         fileReader = new FileReader();
+         fileReader.onload = (e) => {
+            const {result} = e.target;
+            if (result && !isCancel) {
+               setFileDataURL(result);
+            }
+         };
+         fileReader.readAsDataURL(file);
       }
-      const fileReader = new FileReader();
-
-      fileReader.onchange = (e) => {
-         const {result} = e.target;
+      return () => {
+         isCancel = true;
+         if (fileReader && fileReader.readyState === 1) {
+            fileReader.abort();
+         }
       };
 
-      fileReader.readAsDataURL(fileObject);
+   }, [file]);
 
-      // ======================================
-
-      // console.log('this',this)
-      // var file = this.refs.file.files[0];
-      // const reader = new FileReader();
-      // var uploadedImage = reader.readAsDataURL(file);
-      // // let uploadedImage = reader.result;
-      //
-      // reader.onloadend = function (e) {
-      //    setImgSrc(uploadedImage);
-      // }.bind(this);
-
-      // ======================================
-
-      // const reader = new FileReader();
-      // var url = reader.readAsDataURL(this.files[0]);
-      //
-      // reader.onloadend = function (e) {
-      //    setImgSrc(reader.result)
-
-      // ======================================
-
-      // const reader = new FileReader();
-      //
-      //    reader.addEventListener('load', () => {
-      //       let uploadedImage = reader.result;
-      //       // refs.imageDisplay.src = uploadedImage;
-      //       setImgSrc(uploadedImage)
-      //    });
-      //    reader.readAsDataURL(this.files[0]);
+   const changeHandler = (e) => {
+      const file = e.target.files[0];
+      setFile(file);
    };
 
    return <>
@@ -70,7 +41,7 @@ export const Picture = () => {
                 multiple
                 onChange={changeHandler}/>
          <img className={css.imageDisplay}
-              src={imgSrc}
+              src={fileDataURL}
               alt=""/>
       </label>
    </>;
