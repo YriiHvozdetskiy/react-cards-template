@@ -3,9 +3,6 @@ import css from './CardsForm.module.scss';
 import {Picture} from '../Picture/Picture';
 import {Input, validationSchema, initialValues} from '../Input/Input';
 
-// must be cyrillic
-// ^[А-Яа-яЁё\\s]+$
-
 export const CardsForm = () => {
 
    const handleSubmit = (values, {resetForm}) => {

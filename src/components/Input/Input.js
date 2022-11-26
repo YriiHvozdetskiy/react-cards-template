@@ -9,9 +9,12 @@ let cx = classNames.bind(style);
 export const validationSchema = Yup.object().shape({
    title: Yup.string()
       .max(20, 'Too Long! Max 20')
-      .required('Required'),
+      .required('Required')
+      .matches(/^[А-Яа-яЁёІі\s]+$/, "must be cyrillic"),
    link: Yup.string().url(),
-   text: Yup.string().max(250, 'Too Long! Max 250'),
+   text: Yup.string()
+      .max(250, 'Too Long! Max 250')
+      .matches(/^[А-Яа-яЁёІі\s]+$/, "must be cyrillic"),
 });
 
 export const initialValues = {
