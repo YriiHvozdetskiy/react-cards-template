@@ -1,16 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const counterSlice = createSlice({
-   name: 'counter',
-   initialState: {value: 0},
+export const cardsSlice = createSlice({
+   name: 'cards',
+   initialState: {
+      items: [],
+   },
    reducers: {
-      increment (state, action) {
-         state.value += action.payload;
+      add (state, actions) {
+         state.items.unshift(actions.payload);
       },
-      decrement (state, action) {
-         state.value -= action.payload;
+      remove (state, actions) {
+         state.items = actions.payload;
       },
    },
 });
 
-export const {} = counterSlice.actions;
+export const {add, remove} = cardsSlice.actions;

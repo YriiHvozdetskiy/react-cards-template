@@ -2,11 +2,19 @@ import {Formik, Form} from 'formik';
 import css from './CardsForm.module.scss';
 import {Picture} from '../Picture/Picture';
 import {Input, validationSchema, initialValues} from '../Input/Input';
+import {useDispatch} from 'react-redux';
+import {add} from '../../redux/cards/cardsSlice';
+import {nanoid} from 'nanoid';
 
 export const CardsForm = () => {
+   const dispatch = useDispatch();
 
    const handleSubmit = (values, {resetForm}) => {
-      console.log(values);
+      const value = {
+         ...values,
+         id: nanoid(),
+      };
+      dispatch(add(value));
       resetForm();
    };
 
