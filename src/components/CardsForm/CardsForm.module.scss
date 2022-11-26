@@ -1,0 +1,49 @@
+.form {
+   width: 800px;
+   margin: 0 auto 50px;
+   padding: 10px;
+   display: flex;
+   background-color: #8080801a;
+}
+
+.wrapper {
+   position: relative;
+   width: 100%;
+}
+
+.formList {
+   padding-bottom: 50px;
+}
+
+.fromBtn {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   width: 200px;
+   margin-left: auto;
+   padding: 5px 10px;
+   border: none;
+   background-color: rgba(grey, 0.3);
+   cursor: pointer;
+}
+
+.formItem:not(:nth-last-child(-n + 1)) {
+   margin-bottom: 15px;
+}
+
+.heading,
+.link,
+.text {
+   background-color: rgba(128, 128, 128, 0.3);
+   border: none;
+   width: 100%;
+}
+.text {
+   resize: none;
+}
+
+.heading::placeholder,
+.link::placeholder,
+.text::placeholder {
+   color: black;
+}
