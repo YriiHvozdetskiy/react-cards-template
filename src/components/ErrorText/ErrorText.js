@@ -1,7 +1,7 @@
 import {ErrorMessage} from 'formik';
 
-export  const ErrorText = ()=>{
+export const ErrorText = ({name,tag}) => {
    return <>
-      <ErrorMessage name="title" component="p"/>
-   </>
-}
+      <ErrorMessage name={name} component={tag}/>
+   </>;
+};
