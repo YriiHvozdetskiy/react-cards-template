@@ -1,7 +1,7 @@
-import css from './CardList.module.scss';
+import css from './CardsList.module.scss';
 import {Card} from '../Card/Card';
 
-export const CardList = () => {
+export const CardsList = () => {
    return (
       <>
          <ul className={css.list}>
