@@ -15,7 +15,6 @@ export const CardsForm = () => {
          initialValues={initialValues}
          validationSchema={validationSchema}
          onSubmit={handleSubmit}>
-
          <Form className={css.form} autoComplete="off">
             <Picture/>
             <div className={css.wrapper}>
