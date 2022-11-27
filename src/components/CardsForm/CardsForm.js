@@ -5,17 +5,28 @@ import {Input, validationSchema, initialValues} from '../Input/Input';
 import {useDispatch} from 'react-redux';
 import {add} from '../../redux/cards/cardsSlice';
 import {nanoid} from 'nanoid';
+import {useEffect, useState} from 'react';
 
 export const CardsForm = () => {
    const dispatch = useDispatch();
+   const value = {};
+   // const [clearSrc, setClearSrc] = useState('');
+
 
    const handleSubmit = (values, {resetForm}) => {
-      const value = {
+
+      const data = {
+         ...value,
          ...values,
          id: nanoid(),
       };
-      dispatch(add(value));
+
+      dispatch(add(data));
       resetForm();
+   };
+
+   const getSrcOnSubmit = (src) => {
+      value.src = src;
    };
 
    return (
@@ -24,7 +35,7 @@ export const CardsForm = () => {
          validationSchema={validationSchema}
          onSubmit={handleSubmit}>
          <Form className={css.form} autoComplete="off">
-            <Picture/>
+            <Picture onSubmit={getSrcOnSubmit}/>
             <div className={css.wrapper}>
                <ul className={css.formList}>
                   <li className={css.formItem}>

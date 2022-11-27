@@ -1,10 +1,13 @@
 import {useRef, useState, useEffect} from 'react';
 import css from './Picture.module.scss';
+import {Field} from 'formik';
+import {Input} from '../Input/Input';
 
-export const Picture = () => {
+export const Picture = ({onSubmit}) => {
 
    const [file, setFile] = useState(null);
    const [fileDataURL, setFileDataURL] = useState(null);
+   // const imgRef = useRef('')
 
    useEffect(() => {
       let fileReader, isCancel = false;
@@ -31,6 +34,10 @@ export const Picture = () => {
       const file = e.target.files[0];
       setFile(file);
    };
+
+   onSubmit(fileDataURL)
+   // imgRef.current.src = ''
+   // console.log('imgRef',imgRef)
 
    return <>
       <label className={css.imageWrapper}>

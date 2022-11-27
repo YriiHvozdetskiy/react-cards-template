@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getCards} from '../../redux/cards/cardsSelectors';
 import {remove} from '../../redux/cards/cardsSlice';
 
-export const Card = ({title, text, link, id}) => {
+export const Card = ({title, text, link, id,src}) => {
    const cards = useSelector(getCards);
    const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ export const Card = ({title, text, link, id}) => {
             <a href={link}
                className={css.link}>
                <div className={css.container}>
-                  <img src="" alt=""/>
+                  <img src={src} alt=""/>
                </div>
                <ul className={css.list}>
                   <li className={css.title}>{title}</li>

@@ -9,13 +9,14 @@ export const CardsList = () => {
    return (
       <>
          {cards.length > 0 && <ul className={css.list}>
-            {cards.map(el => (
+            {cards.map(({id,title,text,link,src}) => (
                <Card
-                  key={el.id}
-                  title={el.title}
-                  text={el.text}
-                  link={el.link}
-                  id={el.id}
+                  key={id}
+                  title={title}
+                  text={text}
+                  link={link}
+                  id={id}
+                  src={src}
                />
             ))}
          </ul>}
