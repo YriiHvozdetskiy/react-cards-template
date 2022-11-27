@@ -1,15 +1,17 @@
 import css from './Card.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCards} from '../../redux/cards/cardsSelectors';
-import {remove} from '../../redux/cards/cardsSlice';
+import {remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
 
-export const Card = ({title, text, link, id,src}) => {
+export const Card = ({title, text, link, id, src}) => {
    const cards = useSelector(getCards);
    const dispatch = useDispatch();
 
    const removeCard = (id) => {
       const value = cards.filter(el => el.id !== id);
+      const removeCard = cards.find(el => el.id === id);
       dispatch(remove(value));
+      dispatch(saveRemoveCard(removeCard));
    };
 
    return (

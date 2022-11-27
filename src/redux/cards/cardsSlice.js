@@ -4,6 +4,7 @@ export const cardsSlice = createSlice({
    name: 'cards',
    initialState: {
       items: [],
+      deleteItems: [],
    },
    reducers: {
       add (state, actions) {
@@ -12,7 +13,10 @@ export const cardsSlice = createSlice({
       remove (state, actions) {
          state.items = actions.payload;
       },
+      saveRemoveCard (state, actions) {
+         state.deleteItems.push(actions.payload);
+      },
    },
 });
 
-export const {add, remove} = cardsSlice.actions;
+export const {add, remove, saveRemoveCard} = cardsSlice.actions;
