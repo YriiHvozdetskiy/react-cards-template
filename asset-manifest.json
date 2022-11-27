@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-cards-template/static/css/main.f25d4d7c.css",
+    "main.js": "/react-cards-template/static/js/main.7b6051d7.js",
+    "index.html": "/react-cards-template/index.html",
+    "main.f25d4d7c.css.map": "/react-cards-template/static/css/main.f25d4d7c.css.map",
+    "main.7b6051d7.js.map": "/react-cards-template/static/js/main.7b6051d7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f25d4d7c.css",
+    "static/js/main.7b6051d7.js"
+  ]
+}
