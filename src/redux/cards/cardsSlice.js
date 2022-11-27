@@ -5,6 +5,7 @@ export const cardsSlice = createSlice({
    initialState: {
       items: [],
       deleteItems: [],
+      fileDataURL: null,
    },
    reducers: {
       add (state, actions) {
@@ -16,7 +17,10 @@ export const cardsSlice = createSlice({
       saveRemoveCard (state, actions) {
          state.deleteItems.push(actions.payload);
       },
+      setFileData (state, actions) {
+            state.fileDataURL = actions.payload
+      },
    },
 });
 
-export const {add, remove, saveRemoveCard} = cardsSlice.actions;
+export const {add, remove, saveRemoveCard, setFileData} = cardsSlice.actions;

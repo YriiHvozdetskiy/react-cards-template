@@ -3,15 +3,12 @@ import css from './CardsForm.module.scss';
 import {Picture} from '../Picture/Picture';
 import {Input, validationSchema, initialValues} from '../Input/Input';
 import {useDispatch} from 'react-redux';
-import {add} from '../../redux/cards/cardsSlice';
+import {add, setFileData} from '../../redux/cards/cardsSlice';
 import {nanoid} from 'nanoid';
-import {useEffect, useState} from 'react';
 
 export const CardsForm = () => {
    const dispatch = useDispatch();
    const value = {};
-   // const [clearSrc, setClearSrc] = useState('');
-
 
    const handleSubmit = (values, {resetForm}) => {
 
@@ -22,6 +19,7 @@ export const CardsForm = () => {
       };
 
       dispatch(add(data));
+      dispatch(setFileData(null));
       resetForm();
    };
 

@@ -1,26 +1,33 @@
-import {useRef, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import css from './Picture.module.scss';
-import {Field} from 'formik';
-import {Input} from '../Input/Input';
+import {useDispatch, useSelector} from 'react-redux';
+import {getFileData} from '../../redux/cards/cardsSelectors';
+import {setFileData} from '../../redux/cards/cardsSlice';
 
 export const Picture = ({onSubmit}) => {
 
+   const data = useSelector(getFileData);
+   const dispatch = useDispatch();
    const [file, setFile] = useState(null);
-   const [fileDataURL, setFileDataURL] = useState(null);
-   // const imgRef = useRef('')
+   //TODO як удалити картинку не використовуючи Redux?
+
+   // const [fileDataURL, setFileDataURL] = useState(null);
 
    useEffect(() => {
       let fileReader, isCancel = false;
+
       if (file) {
          fileReader = new FileReader();
          fileReader.onload = (e) => {
             const {result} = e.target;
             if (result && !isCancel) {
-               setFileDataURL(result);
+               dispatch(setFileData(result));
+               // setFileDataURL(result);
             }
          };
          fileReader.readAsDataURL(file);
       }
+
       return () => {
          isCancel = true;
          if (fileReader && fileReader.readyState === 1) {
@@ -35,9 +42,8 @@ export const Picture = ({onSubmit}) => {
       setFile(file);
    };
 
-   onSubmit(fileDataURL)
-   // imgRef.current.src = ''
-   // console.log('imgRef',imgRef)
+   // onSubmit(fileDataURL);
+   onSubmit(data);
 
    return <>
       <label className={css.imageWrapper}>
@@ -48,7 +54,7 @@ export const Picture = ({onSubmit}) => {
                 multiple
                 onChange={changeHandler}/>
          <img className={css.imageDisplay}
-              src={fileDataURL}
+              src={data}
               alt=""/>
       </label>
    </>;
