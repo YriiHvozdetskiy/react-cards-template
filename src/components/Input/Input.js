@@ -8,13 +8,13 @@ let cx = classNames.bind(style);
 
 export const validationSchema = Yup.object().shape({
    title: Yup.string()
-      .max(20, 'Too Long! Max 20')
+      .max(20, 'максимум 20 символів')
       .required('Required')
-      .matches(/^[А-Яа-яЁёІі\s]+$/, "must be cyrillic"),
-   link: Yup.string().url(),
+      .matches(/^[А-Яа-яЁёІі\s]+$/, "підтримуюється лише кирилиця"),
+   link: Yup.string().url('не валідне посилання'),
    text: Yup.string()
-      .max(250, 'Too Long! Max 250')
-      .matches(/^[А-Яа-яЁёІі\s]+$/, "must be cyrillic"),
+      .max(250, 'максимум 20 символів')
+      .matches(/^[А-Яа-яЁёІі\s]+$/, "підтримуюється лише кирилиця"),
 });
 
 export const initialValues = {
