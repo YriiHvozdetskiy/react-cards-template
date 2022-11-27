@@ -1,10 +1,7 @@
 import {Field} from 'formik';
-import style from './Input.module.scss';
+import css from './Input.module.scss';
 import {ErrorText} from '../ErrorText/ErrorText';
-import classNames from 'classnames/bind';
 import * as Yup from 'yup';
-
-let cx = classNames.bind(style);
 
 export const validationSchema = Yup.object().shape({
    title: Yup.string()
@@ -24,14 +21,10 @@ export const initialValues = {
 };
 
 export const Input = ({type, name, placeholder, as, nameClass}) => {
-   let css = cx({
-      heading: nameClass === 'heading',
-      link: nameClass === 'link',
-      text: nameClass === 'text',
-   });
+
 
    return <>
-      <Field className={css}
+      <Field className={css[nameClass]}
              type={type}
              name={name}
              placeholder={placeholder}

@@ -40,7 +40,8 @@ export const CardsForm = () => {
                      <Input type={'text'}
                             name={'title'}
                             placeholder={'Заголовок'}
-                            nameClass={'heading'}/>
+                            nameClass={'heading'}
+                     />
                   </li>
                   <li className={css.formItem}>
                      <Input type={'url'}
