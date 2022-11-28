@@ -2,7 +2,7 @@ import css from './Card.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCards} from '../../redux/cards/cardsSelectors';
 import {addCookie, remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
-import {getCookie} from '../Cookie';
+import {getCookie, getParseCookie, setCookie} from '../Cookie';
 
 export const Card = ({title, text, link, id, src}) => {
    const cards = useSelector(getCards);
@@ -13,7 +13,9 @@ export const Card = ({title, text, link, id, src}) => {
       const removeCard = cards.find(el => el.id === id);
       dispatch(remove(value));
       dispatch(saveRemoveCard(removeCard));
-      console.log('cards',cards)
+      const myCookie = getParseCookie();
+      const removeCookie = myCookie.filter(el => el.id !== id);
+      setCookie('cards', removeCookie);
    };
 
    return (
