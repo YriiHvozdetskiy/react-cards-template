@@ -19,16 +19,16 @@ export const DashboardPage = () => {
    const lastPostIndex = currentPage * postsPerPage;
    const firstPostIndex = lastPostIndex - postsPerPage;
 
-   let currentPosts = [];
+  let currentPosts = cardsData.slice(firstPostIndex, lastPostIndex);
 
-   if (cardsData.length > 0) {
-      currentPosts = cardsData.slice(firstPostIndex, lastPostIndex);
-   } else {
-      currentPosts = doSomething();
-      // setTimeout(() => {
-      //    dispatch(addCookieInRedux(currentPosts));
-      // }, 200);
-   }
+   // if (cardsData.length > 0) {
+   //
+   // } else {
+   //    currentPosts = doSomething();
+   //    // setTimeout(() => {
+   //    //    dispatch(addCookieInRedux(currentPosts));
+   //    // }, 200);
+   // }
 
    const loadMoreHandler = () => {
       setPostsPerPage(prevState => prevState + 9);
