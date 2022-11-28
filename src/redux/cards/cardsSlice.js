@@ -163,10 +163,10 @@ export const cardsSlice = createSlice({
       setFileData (state, actions) {
          state.fileDataURL = actions.payload;
       },
-      addCookie (state, actions) {
+      addCookieInRedux (state, actions) {
          state.items = actions.payload;
       },
    },
 });
 
-export const {add, remove, saveRemoveCard, setFileData, addCookie} = cardsSlice.actions;
+export const {add, remove, saveRemoveCard, setFileData, addCookieInRedux} = cardsSlice.actions;

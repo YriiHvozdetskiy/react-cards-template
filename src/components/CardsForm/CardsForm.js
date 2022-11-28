@@ -2,19 +2,16 @@ import {Formik, Form} from 'formik';
 import css from './CardsForm.module.scss';
 import {Picture} from '../Picture/Picture';
 import {Input, validationSchema, initialValues} from '../Input/Input';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {add, setFileData} from '../../redux/cards/cardsSlice';
 import {nanoid} from 'nanoid';
-import {getCards} from '../../redux/cards/cardsSelectors';
 import {setCookie} from '../Cookie';
+
+const cookie = [];
 
 export const CardsForm = () => {
    const dispatch = useDispatch();
-   const cards = useSelector(getCards);
-
    const value = {};
-
-   if (cards.length > 0) setCookie('cards', cards, 2);
 
    const handleSubmit = (values, {resetForm}) => {
 
@@ -24,9 +21,11 @@ export const CardsForm = () => {
          id: nanoid(),
       };
 
+      cookie.push(data);
+
       dispatch(add(data));
       dispatch(setFileData(null));
-      setCookie('cards', cards, 2);
+      setCookie('cards', cookie);
       resetForm();
    };
 

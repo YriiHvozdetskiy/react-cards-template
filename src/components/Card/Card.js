@@ -1,7 +1,8 @@
 import css from './Card.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCards} from '../../redux/cards/cardsSelectors';
-import {remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
+import {addCookie, remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
+import {getCookie} from '../Cookie';
 
 export const Card = ({title, text, link, id, src}) => {
    const cards = useSelector(getCards);
