@@ -7,6 +7,7 @@ export const CardsList = ({cardsData,postsPerPage,setPostsPerPage}) => {
    const loadMoreHandler = () => {
       setPostsPerPage(prevState => prevState + 9);
    };
+   //TODO fix loadMore
 
    return (
       <>

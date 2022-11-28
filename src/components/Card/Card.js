@@ -13,6 +13,7 @@ export const Card = ({title, text, link, id, src}) => {
       const removeCard = cards.find(el => el.id === id);
       dispatch(remove(value));
       dispatch(saveRemoveCard(removeCard));
+      console.log('cards',cards)
    };
 
    return (

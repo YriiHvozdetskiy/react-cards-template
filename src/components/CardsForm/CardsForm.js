@@ -25,7 +25,8 @@ export const CardsForm = () => {
 
       dispatch(add(data));
       dispatch(setFileData(null));
-      // setCookie('cards', cookie);
+      setCookie('cards', cookie);
+      console.log('addCookie');
       resetForm();
    };
 
