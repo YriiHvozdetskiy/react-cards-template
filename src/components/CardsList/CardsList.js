@@ -8,8 +8,6 @@ export const CardsList = ({cardsData,postsPerPage,setPostsPerPage}) => {
       setPostsPerPage(prevState => prevState + 9);
    };
 
-   console.log('postsPerPage',postsPerPage)
-   console.log('cardsData.length',cardsData.length)
    return (
       <>
          {cardsData.length > 0 && <div className={css.wrapper}>
