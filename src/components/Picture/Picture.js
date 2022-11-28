@@ -9,7 +9,7 @@ export const Picture = ({onSubmit}) => {
    const data = useSelector(getFileData);
    const dispatch = useDispatch();
    const [file, setFile] = useState(null);
-   //TODO як удалити картинку не використовуючи Redux?
+   //TODO удалити картинку не використовуючи Redux
 
    // const [fileDataURL, setFileDataURL] = useState(null);
 

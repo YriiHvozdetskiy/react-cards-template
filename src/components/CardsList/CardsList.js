@@ -7,13 +7,12 @@ export const CardsList = ({cardsData}) => {
          {cardsData.length > 0 && <div className={css.wrapper}>
             <ul className={css.list}>
                {cardsData.map(({id, title, text, link, src}) => (
-                  <Card
-                     key={id}
-                     title={title}
-                     text={text}
-                     link={link}
-                     id={id}
-                     src={src}
+                  <Card key={id}
+                        title={title}
+                        text={text}
+                        link={link}
+                        id={id}
+                        src={src}
                   />
                ))}
             </ul>
