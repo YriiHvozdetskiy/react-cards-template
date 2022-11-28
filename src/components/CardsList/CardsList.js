@@ -1,7 +1,15 @@
 import css from './CardsList.module.scss';
 import {Card} from '../Card/Card';
+import {LoadMore} from '../LoadMore/LoadMore';
 
-export const CardsList = ({cardsData}) => {
+export const CardsList = ({cardsData,postsPerPage,setPostsPerPage}) => {
+
+   const loadMoreHandler = () => {
+      setPostsPerPage(prevState => prevState + 9);
+   };
+
+   console.log('postsPerPage',postsPerPage)
+   console.log('cardsData.length',cardsData.length)
    return (
       <>
          {cardsData.length > 0 && <div className={css.wrapper}>
@@ -16,6 +24,7 @@ export const CardsList = ({cardsData}) => {
                   />
                ))}
             </ul>
+            {cardsData.length >= postsPerPage && <LoadMore loadMore={loadMoreHandler}/>}
          </div>}
       </>
    );

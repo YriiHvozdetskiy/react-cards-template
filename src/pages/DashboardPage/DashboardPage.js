@@ -30,21 +30,17 @@ export const DashboardPage = () => {
    //    // }, 200);
    // }
 
-   const loadMoreHandler = () => {
-      setPostsPerPage(prevState => prevState + 9);
-   };
-
    return <main>
       <section>
          <div className={css.container}>
             <CardsForm/>
-            <CardsList cardsData={currentPosts}/>
+            <CardsList cardsData={currentPosts}
+                       postsPerPage={postsPerPage}
+                       setPostsPerPage={setPostsPerPage}/>
             {cardsData.length > postsPerPage && <Paginate totalPosts={cardsData.length}
                                                           postsPerPage={postsPerPage}
                                                           setCurrentPage={setCurrentPage}
                                                           currentPage={currentPage}/>}
-
-            {cardsData.length > postsPerPage && <LoadMore loadMore={loadMoreHandler}/>}
          </div>
       </section>
    </main>;
