@@ -1,13 +1,18 @@
 import css from './CardsList.module.scss';
 import {Card} from '../Card/Card';
 import {LoadMore} from '../LoadMore/LoadMore';
+import {useSelector} from 'react-redux';
+import {getCards} from '../../redux/cards/cardsSelectors';
 
-export const CardsList = ({cardsData,postsPerPage,setPostsPerPage}) => {
+export const CardsList = ({cardsData, postsPerPage, setPostsPerPage, currentPage}) => {
+
+   const cards = useSelector(getCards);
 
    const loadMoreHandler = () => {
       setPostsPerPage(prevState => prevState + 9);
    };
-   //TODO fix loadMore
+
+   const showLoadMore = cardsData.length >= postsPerPage && currentPage * cardsData.length < cards.length;
 
    return (
       <>
@@ -23,7 +28,7 @@ export const CardsList = ({cardsData,postsPerPage,setPostsPerPage}) => {
                   />
                ))}
             </ul>
-            {cardsData.length >= postsPerPage && <LoadMore loadMore={loadMoreHandler}/>}
+            {showLoadMore && <LoadMore loadMore={loadMoreHandler}/>}
          </div>}
       </>
    );

@@ -22,7 +22,9 @@ export const DashboardPage = () => {
             <CardsForm/>
             <CardsList cardsData={currentPosts}
                        postsPerPage={postsPerPage}
-                       setPostsPerPage={setPostsPerPage}/>
+                       setPostsPerPage={setPostsPerPage}
+                       currentPage={currentPage}
+            />
             {cardsData.length > postsPerPage && <Paginate totalPosts={cardsData.length}
                                                           postsPerPage={postsPerPage}
                                                           setCurrentPage={setCurrentPage}

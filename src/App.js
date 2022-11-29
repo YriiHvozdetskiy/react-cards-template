@@ -8,9 +8,7 @@ export const App = () => {
    const dispatch = useDispatch();
 
    useEffect(() => {
-
       const myCookie = getParseCookie().reverse();
-      console.log('myCookie', myCookie);
       if (myCookie.length > 0) {
          dispatch(addCookieInRedux(myCookie));
       }
