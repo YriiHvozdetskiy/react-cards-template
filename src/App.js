@@ -13,6 +13,7 @@ export const App = () => {
          dispatch(addCookieInRedux(myCookie));
       }
    });
+
    return (
       <>
          <DashboardPage/>

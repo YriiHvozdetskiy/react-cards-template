@@ -7,11 +7,10 @@ import {add, setFileData} from '../../redux/cards/cardsSlice';
 import {nanoid} from 'nanoid';
 import {setCookie} from '../Cookie';
 
-const cookie = [];
-
 export const CardsForm = () => {
    const dispatch = useDispatch();
    const value = {};
+   const cookie = [];
 
    const handleSubmit = (values, {resetForm}) => {
 
@@ -26,7 +25,6 @@ export const CardsForm = () => {
       dispatch(add(data));
       dispatch(setFileData(null));
       setCookie('cards', cookie);
-      console.log('addCookie');
       resetForm();
    };
 

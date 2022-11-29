@@ -1,23 +1,20 @@
 export const setCookie = (cname, cvalue, exdays) => {
 
-   const oldCookie = getParseCookie()
-   document.cookie = cname + "=" + JSON.stringify(cvalue) ;
-   // document.cookie = cname + "=" + JSON.stringify([...cvalue,...oldCookie,]) ;
+   const oldCookie = getParseCookie();
 
+   if (oldCookie.length > 0) {
+      let newCookie = cvalue.pop();
+      oldCookie.push(newCookie);
+      document.cookie = cname + "=" + JSON.stringify(oldCookie);
+      return;
+   }
+
+   document.cookie = cname + "=" + JSON.stringify(cvalue);
 };
 
-const setArrayCookie = (cname, cvalue) => {
-
-   const oldCookie = getParseCookie()
-   // console.log('cvalue arr',cvalue)
-   // console.log('oldCookie strigarr',oldCookie)
-
-   document.cookie = cname + "=" + JSON.stringify([...oldCookie,...cvalue]) ;
-}
-
-function reverse(s){
-   return [...s].reverse().join("");
-}
+export const updateCookie = (name, value) => {
+   document.cookie = name + "=" + JSON.stringify(value);
+};
 
 export const getCookie = (name) => {
    let dc = document.cookie;

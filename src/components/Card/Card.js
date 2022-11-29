@@ -1,8 +1,8 @@
 import css from './Card.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCards} from '../../redux/cards/cardsSelectors';
-import {addCookie, remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
-import {getCookie, getParseCookie, setCookie} from '../Cookie';
+import {remove, saveRemoveCard} from '../../redux/cards/cardsSlice';
+import {getParseCookie, updateCookie} from '../Cookie';
 
 export const Card = ({title, text, link, id, src}) => {
    const cards = useSelector(getCards);
@@ -15,7 +15,7 @@ export const Card = ({title, text, link, id, src}) => {
       dispatch(saveRemoveCard(removeCard));
       const myCookie = getParseCookie();
       const removeCookie = myCookie.filter(el => el.id !== id);
-      setCookie('cards', removeCookie);
+      updateCookie('cards', removeCookie);
    };
 
    return (
