@@ -44,6 +44,7 @@ export const Picture = ({onSubmit}) => {
 
    // onSubmit(fileDataURL);
    onSubmit(data);
+   console.log('data',data)
 
    return <>
       <label className={css.imageWrapper}>

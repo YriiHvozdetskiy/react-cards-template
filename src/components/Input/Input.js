@@ -6,8 +6,9 @@ import * as Yup from 'yup';
 export const validationSchema = Yup.object().shape({
    title: Yup.string()
       .max(20, 'максимум 20 символів')
-      .required('Required'),
-
+      .required('Required')
+      .matches(/^[А-Яа-яЁёІі\s]+$/, "підтримуюється лише кирилиця")
+      .trim('заповніть поле'),
    link: Yup.string().url('не валідне посилання'),
    text: Yup.string()
       .max(250, 'максимум 20 символів')
